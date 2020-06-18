@@ -21,4 +21,5 @@ class TestItem(TestCase):
     def test_has_sell_in(self):
         self.assertTrue(hasattr(self.item, "sell_in"))
 
-    
+    def test_sell_in_initialized(self):
+        self.assertEqual(self.item.sell_in, 0)

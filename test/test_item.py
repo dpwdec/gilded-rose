@@ -2,11 +2,14 @@ from unittest import TestCase
 from src.item import Item
 
 class TestItem(TestCase):
+
+    def setUp(self):
+        self.item = Item("foo", 0, 0)
     
     def test_has_name(self):
-        item = Item("foo", 0, 0)
-        self.assertTrue(hasattr(item, "name"))
+        self.assertTrue(hasattr(self.item, "name"))
 
     def test_name_initialized(self):
-        item = Item("foo", 0, 0)
-        self.assertEqual(item.name, "foo")
+        self.assertEqual(self.item.name, "foo")
+
+    

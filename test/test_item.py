@@ -15,4 +15,7 @@ class TestItem(TestCase):
     def test_has_quality(self):
         self.assertTrue(hasattr(self.item, "quality"))
 
+    def test_quality_initialized(self):
+        self.assertEqual(self.item.quality, 0)
+
     

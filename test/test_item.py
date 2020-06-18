@@ -12,4 +12,7 @@ class TestItem(TestCase):
     def test_name_initialized(self):
         self.assertEqual(self.item.name, "foo")
 
+    def test_has_quality(self):
+        self.assertTrue(hasattr(self.item, "quality"))
+
     

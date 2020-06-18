@@ -15,3 +15,24 @@ We have recently signed a supplier of conjured items. This requires an update to
 
 “Conjured” items degrade in Quality twice as fast as normal items
 Feel free to make any changes to the UpdateQuality method and add any new code as long as everything still works correctly. However, do not alter the Item class or Items property as those belong to the goblin in the corner who will insta-rage and one-shot you as he doesn’t believe in shared code ownership (you can make the UpdateQuality method and Items property static if you like, we’ll cover for you)."*
+
+  # what should I testing
+    # if I pass in a an item with a name foo
+    # and a quality > 0
+    # i expect that that mock will have its quality
+    # reduced by -1 at some point in the execution of updating
+    # I could extend the item class, wh
+
+I could extend the item class, instead and make the user create them, I think that would be more logical.
+
+Then I could have a 
+
+Regular Item
+Legendary Item
+
+Regular Item --> Not Age Brie or Tickets or Sulfuras Or Conjured
+            --> decreases in quality by 1
+            --> decreates in quality by 2 after sell_in date
+
+
+Then all guilded rose would do is called `update_quality` on each item.

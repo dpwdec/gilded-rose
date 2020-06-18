@@ -2,7 +2,8 @@
 from unittest import TestCase
 from unittest import mock
 
-from src.gilded_rose import Item, GildedRose
+from src.gilded_rose import GildedRose
+from src.item import Item
 
 class GildedRoseTest(TestCase):
 
@@ -11,7 +12,7 @@ class GildedRoseTest(TestCase):
     # and a quality > 0
     # i expect that that mock will have its quality
     # reduced by -1 at some point in the execution of updating
-    # 
+    # I could extend the item class, wh
 
     def test_item_quality_lowered_by_one(self):
         pass

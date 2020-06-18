@@ -6,3 +6,7 @@ class TestItem(TestCase):
     def test_has_name(self):
         item = Item("foo", 0, 0)
         self.assertTrue(hasattr(item, "name"))
+
+    def test_name_initialized(self):
+        item = Item("foo", 0, 0)
+        self.assertEqual(item.name, "foo")

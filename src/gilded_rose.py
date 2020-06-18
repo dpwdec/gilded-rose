@@ -35,6 +35,9 @@ class GildedRose(object):
                     if item.quality < 50:
                         item.quality = item.quality + 1
 
+    def _reduce_quality(self, item):
+        pass
+
 
 class Item:
     def __init__(self, name, sell_in, quality):

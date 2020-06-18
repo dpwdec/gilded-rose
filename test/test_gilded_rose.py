@@ -6,6 +6,13 @@ from src.gilded_rose import Item, GildedRose
 
 class GildedRoseTest(TestCase):
 
+    # what should I testing
+    # if I pass in a an item with a name foo
+    # and a quality > 0
+    # i expect that that mock will have its quality
+    # reduced by -1 at some point in the execution of updating
+    # 
+
     def test_item_quality_lowered_by_one(self):
         pass
         foo_item = mock.Mock()

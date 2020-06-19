@@ -6,4 +6,5 @@ class RegularItem(Item):
         self.sell_in -= 1
 
     def update_quality(self):
+        if self.quality == 0: return
         self.quality -= 1

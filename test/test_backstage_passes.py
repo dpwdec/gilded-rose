@@ -92,7 +92,7 @@ class AfterSellBy(TestBackstagePasses):
 
     def setUp(self):
         super().setUp()
-        self.backstage_pass.sell_in = 0
+        self.backstage_pass.sell_in = -1
 
     def test_update_item_quality(self):
         """

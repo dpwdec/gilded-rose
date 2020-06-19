@@ -50,7 +50,7 @@ class AfterSellBy(TestRegularItem):
 
     def setUp(self):
         super().setUp()
-        self.foo_item.sell_in = 0
+        self.foo_item.sell_in = -1
 
     def test_item_quality_lowered(self):
         """

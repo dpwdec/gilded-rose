@@ -48,7 +48,7 @@ class AfterSellBy(TestAgedBrie):
 
     def setUp(self):
         super().setUp()
-        self.aged_brie.sell_in = 0
+        self.aged_brie.sell_in = -1
 
     def test_update_quality_after_sell_in(self):
         """
@@ -75,6 +75,6 @@ class AfterSellBy(TestAgedBrie):
         """
         self.aged_brie.quality = 10
         self.gilded_rose.update_quality()
-        self.assertEqual(self.aged_brie.sell_in, -1)
+        self.assertEqual(self.aged_brie.sell_in, -2)
 
     

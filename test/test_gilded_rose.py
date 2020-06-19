@@ -7,13 +7,15 @@ from src.item import Item
 from src.regular_item import RegularItem
 
 class GildedRoseTest(TestCase):
-
+    pass
     # what should I testing
     # if I pass in a an item with a name foo
     # and a quality > 0
     # i expect that that mock will have its quality
     # reduced by -1 at some point in the execution of updating
     # I could extend the item class, wh
+
+class RegularItemTest(GildedRoseTest):
 
     def setUp(self):
         self.foo_item = mock.Mock()
@@ -30,6 +32,8 @@ class GildedRoseTest(TestCase):
     def test_item_sell_in_lowered(self):
         self.gilded_rose.update_quality()
         self.assertEqual(self.foo_item.sell_in, 9)
+
+class LegacyItemTests(GildedRoseTest):
 
     def _item_comparison(self):
         old_foo_item = Item("Foo", 10, 10)

@@ -47,6 +47,20 @@ class TestRegularItemAfterSellBY(GildedRoseTest):
             self.gilded_rose.update_quality()
             self.assertEqual(self.foo_item.quality, 8)
 
+class TestItemQualityAboveZero(GildedRoseTest):
+
+    def setUp(self):
+        self.foo_item = mock.Mock()
+        self.foo_item.quality = 0
+        self.foo_item.sell_in = 10
+        self.foo_item.name = "Foo"
+        items = [self.foo_item]
+        self.gilded_rose = GildedRose(items)
+
+    def test_item_quality_not_lower(self):
+        self.gilded_rose.update_quality()
+        self.assertEqual(self.foo_item.quality, 0)
+
 class LegacyItemTests(GildedRoseTest):
 
     def _item_comparison(self):

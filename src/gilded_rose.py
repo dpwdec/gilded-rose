@@ -5,6 +5,20 @@ class GildedRose(object):
     def __init__(self, items):
         self.items = items
 
+    def update(self):
+        for item in self.items:
+            if item.name == "Age Brie":
+                pass
+            if item.name == "Backstage passes to a TAFKAL80ETC concert":
+                pass
+            if item.name == "Sulfuras, Hand of Ragnaros":
+                pass
+            else:
+                self._update_regular_quality(item)
+    
+    def _update_regular_quality(self, item):
+        item.quality -= 1
+    
     def update_quality(self):
         for item in self.items:
             if item.name != "Aged Brie" and item.name != "Backstage passes to a TAFKAL80ETC concert":

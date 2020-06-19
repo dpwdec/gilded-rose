@@ -1,32 +1,72 @@
+# -*- coding: utf-8 -*-
 from unittest import TestCase
 from unittest import mock
-from src.regular_item import RegularItem
 
-class TestRegularItem(TestCase):
+from src.gilded_rose import GildedRose
+from src.item import Item
 
-    def test_update_sell_in(self):
-        regular_item = RegularItem('foo', 10, 10)
-        regular_item.update_sell_in()
-        self.assertEqual(regular_item.sell_in, 9)
+class TestGildedRose(TestCase):
+    pass
 
-    def test_update_quality(self):
-        regular_item = RegularItem('foo', 10, 10)
-        regular_item.update_quality()
-        self.assertEqual(regular_item.quality, 9)
+class TestRegularItemBeforeSellBy(TestGildedRose):
 
-    def test_update_quality_capped_at_zero(self):
+    def setUp(self):
+        self.foo_item = mock.Mock()
+        self.foo_item.quality = 10
+        self.foo_item.sell_in = 10
+        self.foo_item.name = "Foo"
+        items = [self.foo_item]
+        self.gilded_rose = GildedRose(items)
+
+    def test_item_quality_lowered(self):
         """
-        a regular items quality cannot go below 0
+        regular item quality degrades by 1
+        each update cycle
+        when sell in is above 0
         """
-        regular_item = RegularItem('foo', 10, 0)
-        regular_item.update_quality()
-        self.assertEqual(regular_item.quality, 0)
+        self.gilded_rose.update_quality()
+        self.assertEqual(self.foo_item.quality, 9)
 
-    def test_update_quality_after_sell_in(self):
+    def test_item_sell_in_lowered(self):
         """
-        a regular items quality degrades twice as fast
-        when sell_in is < 0
+        sell in drops by one 
+        each update cycle
         """
-        regular_item = RegularItem('foo', 0, 10)
-        regular_item.update_quality()
-        self.assertEqual(regular_item.quality, 8)
+        self.gilded_rose.update_quality()
+        self.assertEqual(self.foo_item.sell_in, 9)
+
+class TestRegularItemAfterSellBY(TestGildedRose):
+
+    def setUp(self):
+        self.foo_item = mock.Mock()
+        self.foo_item.quality = 10
+        self.foo_item.sell_in = 0
+        self.foo_item.name = "Foo"
+        items = [self.foo_item]
+        self.gilded_rose = GildedRose(items)
+
+    def test_item_quality_lowered(self):
+        """
+        regular item quality degrades by 2
+        each update cycle
+        when sell in is above 0
+        """
+        self.gilded_rose.update_quality()
+        self.assertEqual(self.foo_item.quality, 8)
+
+class TestItemQualityAboveZero(TestGildedRose):
+
+    def setUp(self):
+        self.foo_item = mock.Mock()
+        self.foo_item.quality = 0
+        self.foo_item.sell_in = 10
+        self.foo_item.name = "Foo"
+        items = [self.foo_item]
+        self.gilded_rose = GildedRose(items)
+
+    def test_item_quality_not_lower(self):
+        """
+        regular item qualit cannot drop below zero    
+        """
+        self.gilded_rose.update_quality()
+        self.assertEqual(self.foo_item.quality, 0)

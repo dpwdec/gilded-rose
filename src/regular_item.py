@@ -4,3 +4,6 @@ class RegularItem(Item):
 
     def update_sell_in(self):
         self.sell_in -= 1
+
+    def update_quality(self):
+        self.quality -= 1

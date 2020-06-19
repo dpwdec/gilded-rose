@@ -15,15 +15,17 @@ class GildedRoseTest(TestCase):
     # reduced by -1 at some point in the execution of updating
     # I could extend the item class, wh
 
+    def setUp(self):
+        self.foo_item = mock.Mock()
+        self.foo_item.quality = 10
+        self.foo_item.sell_in = 10
+        self.foo_item.name = "Foo"
+        items = [self.foo_item]
+        self.gilded_rose = GildedRose(items)
+
     def test_item_quality_lowered(self):
-        foo_item = mock.Mock()
-        foo_item.quality = 10
-        foo_item.sell_in = 10
-        foo_item.name = "Foo"
-        items = [foo_item]
-        gilded_rose = GildedRose(items)
-        gilded_rose.update_quality()
-        self.assertEqual(foo_item.quality, 9)
+        self.gilded_rose.update_quality()
+        self.assertEqual(self.foo_item.quality, 9)
 
     def _item_comparison(self):
         old_foo_item = Item("Foo", 10, 10)

@@ -21,3 +21,12 @@ class TestRegularItem(TestCase):
         regular_item = RegularItem('foo', 10, 0)
         regular_item.update_quality()
         self.assertEqual(regular_item.quality, 0)
+
+    def test_update_quality_after_sell_in(self):
+        """
+        a regular items quality degrades twice as fast
+        when sell_in is < 0
+        """
+        regular_item = RegularItem('foo', 0, 10)
+        regular_item.update_quality()
+        self.assertEqual(regular_item.quality, 8)

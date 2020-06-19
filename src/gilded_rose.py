@@ -8,10 +8,7 @@ class GildedRose(object):
     def update_quality(self):
         for item in self.items:
             if item.name == "Aged Brie":
-                if item.sell_in < 0:
-                    self._change_quality(item, 2)
-                else:
-                    self._change_quality(item, 1)
+                self._update_aged_brie_quality(item)
             elif item.name == "Backstage passes to a TAFKAL80ETC concert":
                 if item.sell_in > 10:
                     self._change_quality(item, 1)
@@ -22,7 +19,7 @@ class GildedRose(object):
                 else:
                     self._change_quality(item, -item.quality)
             elif item.name != "Sulfuras, Hand of Ragnaros":
-                self._update_regular_quality(item)              
+                self._update_regular_item_quality(item)              
         
             if item.name != "Sulfuras, Hand of Ragnaros":
                 item.sell_in = item.sell_in - 1
@@ -32,11 +29,17 @@ class GildedRose(object):
         if item.quality > 50: item.quality = 50
         if item.quality < 0: item.quality = 0
 
-    def _update_regular_quality(self, item):
+    def _update_regular_item_quality(self, item):
         if item.sell_in < 0:
             self._change_quality(item, -2)
         else:
-            self._change_quality(item, -1) 
+            self._change_quality(item, -1)
+
+    def _update_aged_brie_quality(self, item):
+        if item.sell_in < 0:
+            self._change_quality(item, 2)
+        else:
+            self._change_quality(item, 1)
 
     def _reduce_quality(self, item):
         pass

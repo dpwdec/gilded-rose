@@ -4,6 +4,7 @@ from unittest import mock
 
 from src.gilded_rose import GildedRose
 from src.item import Item
+from src.regular_item import RegularItem
 
 class GildedRoseTest(TestCase):
 
@@ -14,7 +15,16 @@ class GildedRoseTest(TestCase):
     # reduced by -1 at some point in the execution of updating
     # I could extend the item class, wh
 
-    def test_item_quality_lowered_by_one(self):
+    def test_item_comparison(self):
+        old_foo_item = Item("Foo", 10, 10)
+        old_items = [old_foo_item]
+        new_foo_item = RegularItem("Foo", 10, 10)
+        gilded_rose = GildedRose(old_items)
+        gilded_rose.update_quality()
+        new_foo_item.update_quality()
+        self.assertEqual(old_items[0].quality, new_foo_item.quality)
+
+    def _item_quality_lowered_by_one(self):
         pass
         foo_item = mock.Mock()
         foo_item.name = "foo"

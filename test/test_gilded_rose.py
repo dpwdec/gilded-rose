@@ -27,6 +27,10 @@ class GildedRoseTest(TestCase):
         self.gilded_rose.update_quality()
         self.assertEqual(self.foo_item.quality, 9)
 
+    def test_item_sell_in_lowered(self):
+        self.gilded_rose.update_quality()
+        self.assertEqual(self.foo_item.sell_in, 9)
+
     def _item_comparison(self):
         old_foo_item = Item("Foo", 10, 10)
         old_items = [old_foo_item]

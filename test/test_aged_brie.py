@@ -8,6 +8,6 @@ class TestAgedBrie(TestCase):
         Aged brie increases in quality
         over time
         """
-        # aged_brie = AgedBrie("Aged Brie", 10, 5)
-        # aged_brie.updadate_quality()
-        # self.assertEqual(aged_brie.quality, 6)
+        aged_brie = AgedBrie("Aged Brie", 10, 5)
+        aged_brie.update_quality()
+        self.assertEqual(aged_brie.quality, 6)

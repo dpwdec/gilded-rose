@@ -1,12 +1,9 @@
-from src.item import Item
+from src.variable_item import VariableItem
 
-class RegularItem(Item):
-
-    def update_sell_in(self):
-        self.sell_in -= 1
+class RegularItem(VariableItem):
 
     def update_quality(self):
-        if self.quality == 0: return
+        if self.quality <= 0: return
         if self.sell_in > 0:
             self.quality -= 1
         else:

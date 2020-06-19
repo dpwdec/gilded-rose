@@ -15,7 +15,7 @@ class GildedRoseTest(TestCase):
     # reduced by -1 at some point in the execution of updating
     # I could extend the item class, wh
 
-class RegularItemTest(GildedRoseTest):
+class TestRegularItemBeforeSellBy(GildedRoseTest):
 
     def setUp(self):
         self.foo_item = mock.Mock()
@@ -32,6 +32,20 @@ class RegularItemTest(GildedRoseTest):
     def test_item_sell_in_lowered(self):
         self.gilded_rose.update_quality()
         self.assertEqual(self.foo_item.sell_in, 9)
+
+class TestRegularItemAfterSellBY(GildedRoseTest):
+
+        def setUp(self):
+            self.foo_item = mock.Mock()
+            self.foo_item.quality = 10
+            self.foo_item.sell_in = 0
+            self.foo_item.name = "Foo"
+            items = [self.foo_item]
+            self.gilded_rose = GildedRose(items)
+
+        def test_item_quality_lowered(self):
+            self.gilded_rose.update_quality()
+            self.assertEqual(self.foo_item.quality, 8)
 
 class LegacyItemTests(GildedRoseTest):
 

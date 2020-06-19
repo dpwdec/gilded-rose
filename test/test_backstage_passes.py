@@ -15,7 +15,7 @@ class GreaterThanTenDays(TestBackstagePasses):
     
     def setUp(self):
         super().setUp()
-        self.backstage_pass.sell_in = 11
+        self.backstage_pass.sell_in = 12
 
     def test_update_item_quality(self):
         """

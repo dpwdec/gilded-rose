@@ -40,3 +40,6 @@ Then all guilded rose would do is called `update_quality` on each item.
 
 Item  -->   VariableItem  -->   RegularItem
                             -->   AgedBrie
+
+
+There is `update quality` which pushes in the correct update values

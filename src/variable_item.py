@@ -7,3 +7,6 @@ class VariableItem(Item):
 
     def update_quality(self):
         if self.quality <= 0: return
+
+    def increment_quality(self):
+        pass

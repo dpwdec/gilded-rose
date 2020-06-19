@@ -3,6 +3,10 @@ from src.variable_item import VariableItem
 
 class TestVariableItem(TestCase):
 
+    def test_increment_quality(self):
+        variable_item = VariableItem("Foo", 10, 10)
+        self.assertTrue(hasattr(variable_item, "increment_quality"))
+
     def test_has_update_sell_in(self):
         """
         All variable items can update their sell_in

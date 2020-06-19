@@ -11,3 +11,4 @@ class VariableItem(Item):
     def increment_quality(self, delta):
         self.quality += delta
         if(self.quality < 0): self.quality = 0
+        if(self.quality > 50): self.quality = 50

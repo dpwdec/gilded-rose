@@ -22,10 +22,7 @@ class GildedRose(object):
                 else:
                     self._change_quality(item, -item.quality)
             elif item.name != "Sulfuras, Hand of Ragnaros":
-                if item.sell_in < 0:
-                    self._change_quality(item, -2)
-                else:
-                    self._change_quality(item, -1)               
+                self._update_regular_quality(item)              
         
             if item.name != "Sulfuras, Hand of Ragnaros":
                 item.sell_in = item.sell_in - 1
@@ -34,6 +31,12 @@ class GildedRose(object):
         item.quality += amount
         if item.quality > 50: item.quality = 50
         if item.quality < 0: item.quality = 0
+
+    def _update_regular_quality(self, item):
+        if item.sell_in < 0:
+            self._change_quality(item, -2)
+        else:
+            self._change_quality(item, -1) 
 
     def _reduce_quality(self, item):
         pass

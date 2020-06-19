@@ -12,6 +12,11 @@ class TestVariableItem(TestCase):
         variable_item.increment_quality(-1)
         self.assertEqual(variable_item.quality, 9)
 
+    def test_increment_quality_lower_cap(self):
+        variable_item = VariableItem("Foo", 10, 0)
+        variable_item.increment_quality(-1)
+        self.assertEqual(variable_item.quality, 0)
+
     def test_has_update_sell_in(self):
         """
         All variable items can update their sell_in

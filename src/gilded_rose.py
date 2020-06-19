@@ -24,6 +24,8 @@ class GildedRose(object):
                         if item.sell_in < 6:
                             if item.quality < 50:
                                 item.quality = item.quality + 1
+                if item.sell_in < 0:
+                    item.quality = item.quality - item.quality
                 item.sell_in = item.sell_in - 1
             elif item.name == "Sulfuras, Hand of Ragnaros":
                 pass
@@ -34,17 +36,6 @@ class GildedRose(object):
                     if item.quality > 0:
                         item.quality = item.quality - 1                
                 item.sell_in = item.sell_in - 1
-
-
-
-
-            if item.name == "Backstage passes to a TAFKAL80ETC concert":
-                pass
-            if item.sell_in < 0:
-                if item.name != "Backstage passes to a TAFKAL80ETC concert":
-                    pass
-                else:
-                    item.quality = item.quality - item.quality
 
     def _reduce_quality(self, item):
         pass

@@ -6,7 +6,7 @@ class VariableItem(Item):
         self.sell_in -= 1
 
     def update_quality(self):
-        if self.quality <= 0: return
+        pass
 
     def increment_quality(self, delta):
         self.quality += delta

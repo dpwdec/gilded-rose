@@ -62,3 +62,28 @@ class BetweenTenAndSixDays(TestBackstagePasses):
         self.backstage_pass.quality = 50
         self.gilded_rose.update_quality()
         self.assertEqual(self.backstage_pass.quality, 50)
+
+class LessThanSixDays(TestBackstagePasses):
+
+    def setUp(self):
+        super().setUp()
+        self.backstage_pass.sell_in = 4
+
+    def test_update_item_quality(self):
+        """
+        backstage pass quality increases by 1
+        each cycle
+        when sell_in is less than 6
+        """
+        self.backstage_pass.quality = 10
+        self.gilded_rose.update_quality()
+        self.assertEqual(self.backstage_pass.quality, 13)
+
+    def test_update_item_quality_capped(self):
+        """
+        backstage pass item quality cannot go
+        above 50
+        """
+        self.backstage_pass.quality = 50
+        self.gilded_rose.update_quality()
+        self.assertEqual(self.backstage_pass.quality, 50)

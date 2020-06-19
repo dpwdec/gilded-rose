@@ -4,4 +4,7 @@ class AgedBrie(VariableItem):
     
     def update_quality(self):
         if self.quality <= 0: return
-        self.quality += 1
+        if(self.sell_in > 0):
+            self.quality += 1
+        else:
+            self.quality += 2

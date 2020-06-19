@@ -38,5 +38,5 @@ Regular Item --> Not Age Brie or Tickets or Sulfuras Or Conjured
 Then all guilded rose would do is called `update_quality` on each item.
 
 
-Item  -->   ChangeableItem  -->   
-                            -->   
+Item  -->   VariableItem  -->   RegularItem
+                            -->   AgedBrie
